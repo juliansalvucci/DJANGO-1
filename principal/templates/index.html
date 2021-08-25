@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block titulo %}Listado de contacto{% endblock titulo %}</title>  <!--block es para reemplazar parte del código que herede crear_persona.html -->
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1>Template de listado</h1>
+    <table border="2">
+      <thead>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>OPCIÓN</th>
+      </thead>
+      <body>
+        {% for persona in object_list %} <!--for persona in personas-->
+        <tr>
+          <td>{{persona.nombre}}</td>
+          <td>{{persona.apellido}}</td>
+          <td>{{persona.correo}}</td>
+          <td><a href="{% url 'editar_persona' persona.id %}">EDITAR</a><a href="{% url 'eliminar_persona' persona.id %}">ELIMINAR</a></td>
+        </tr>
+        {% endfor %}
+      </body>
+    </table>
+    {% endblock cuerpo %}
+  </body>
+</html>

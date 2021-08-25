@@ -1,0 +1,11 @@
+{% extends 'index.html'%}  <!--Hereda cualidades de index.html para reutilizar código-->
+{% block titulo %}Formulario de contacto{% endblock titulo %}
+{% block cuerpo %}
+
+<form method="POST"> <!--Método post para enviar información-->
+    {% csrf_token %} <!--Validar el usuario para que permita ejecutar la petición post y no nos de 403 forbiden-->
+    {{ form.as_p }}  <!--Esto pinta en el template los inputs que necesito del modelo-->
+    <button type="submit">CREAR O EDITAR</button>
+</form>
+
+{% endblock cuerpo %}
